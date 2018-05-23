@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>userservice</name>
+	<name>user-service</name>
 	<description>User service</description>
 
 	<parent>
@@ -25,67 +25,73 @@
 	</properties>
 
 	<dependencies>
+
+	<dependency>
+		<groupId>org.springframework.security</groupId>
+		<artifactId>spring-security-test</artifactId>
+		<scope>test</scope>
+	</dependency>
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-config</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-actuator</artifactId>
-		</dependency>
-		<!--<dependency>-->
-			<!--<groupId>org.springframework.boot</groupId>-->
-			<!--<artifactId>spring-boot-starter-data-jpa</artifactId>-->
-		<!--</dependency>-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-data-rest</artifactId>
-		</dependency>
-		<!--<dependency>-->
-			<!--<groupId>org.springframework.boot</groupId>-->
-			<!--<artifactId>spring-boot-starter-jdbc</artifactId>-->
-		<!--</dependency>-->
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-security</artifactId>
+			<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-
-		<!--<dependency>-->
-			<!--<groupId>org.postgresql</groupId>-->
-			<!--<artifactId>postgresql</artifactId>-->
-			<!--<scope>runtime</scope>-->
-		<!--</dependency>-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-test</artifactId>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 			<scope>test</scope>
 		</dependency>
-
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
-			<artifactId>spring-cloud-starter-eureka</artifactId>
+			<artifactId>spring-cloud-starter-config</artifactId>
 		</dependency>
+
+		<!-- Spring ORM support -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>5.0.6.RELEASE</version>
+		</dependency>
+
+		<!-- Hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>${hibernate.version}</version>
+		</dependency>
+
+		<!--&lt;!&ndash;<dependency>&ndash;&gt;-->
+		<!--&lt;!&ndash;<groupId>org.springframework.boot</groupId>&ndash;&gt;-->
+		<!--&lt;!&ndash;<artifactId>spring-boot-starter-data-jpa</artifactId>&ndash;&gt;-->
+		<!--&lt;!&ndash;</dependency>&ndash;&gt;-->
 	</dependencies>
+
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
+				<version>Finchley.RC1</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
+
 	<build>
 		<plugins>
 			<plugin>
@@ -95,5 +101,109 @@
 		</plugins>
 	</build>
 
+	<repositories>
+		<repository>
+			<id>spring-milestones</id>
+			<name>Spring Milestones</name>
+			<url>https://repo.spring.io/libs-milestone</url>
+			<snapshots>
+				<enabled>false</enabled>
+			</snapshots>
+		</repository>
+	</repositories>
+
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.cloud</groupId>-->
+			<!--<artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>-->
+		<!--</dependency>-->
+
+		<!--&lt;!&ndash;<dependency>&ndash;&gt;-->
+			<!--&lt;!&ndash;<groupId>org.springframework.cloud</groupId>&ndash;&gt;-->
+			<!--&lt;!&ndash;<artifactId>spring-cloud-starter</artifactId>&ndash;&gt;-->
+		<!--&lt;!&ndash;</dependency>&ndash;&gt;-->
+
+		<!--&lt;!&ndash;<dependency>&ndash;&gt;-->
+			<!--&lt;!&ndash;<groupId>org.springframework.cloud</groupId>&ndash;&gt;-->
+			<!--&lt;!&ndash;<artifactId>spring-cloud-starter-eureka</artifactId>&ndash;&gt;-->
+		<!--&lt;!&ndash;</dependency>&ndash;&gt;-->
+
+		<!--&lt;!&ndash;&lt;!&ndash; https://mvnrepository.com/artifact/org.springframework.cloud/spring-cloud-netflix-eureka-client &ndash;&gt;&ndash;&gt;-->
+		<!--&lt;!&ndash;<dependency>&ndash;&gt;-->
+			<!--&lt;!&ndash;<groupId>org.springframework.cloud</groupId>&ndash;&gt;-->
+			<!--&lt;!&ndash;<artifactId>spring-cloud-netflix-eureka-client</artifactId>&ndash;&gt;-->
+			<!--&lt;!&ndash;<version>1.4.4.RELEASE</version>&ndash;&gt;-->
+		<!--&lt;!&ndash;</dependency>&ndash;&gt;-->
+
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-starter-actuator</artifactId>-->
+		<!--</dependency>-->
+
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-starter-data-rest</artifactId>-->
+		<!--</dependency>-->
+
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-starter-security</artifactId>-->
+		<!--</dependency>-->
+
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-starter-web</artifactId>-->
+		<!--</dependency>-->
+
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-starter-test</artifactId>-->
+			<!--<scope>test</scope>-->
+		<!--</dependency>-->
+
+
+
+
+		<!--&lt;!&ndash;<dependency>&ndash;&gt;-->
+		<!--&lt;!&ndash;<groupId>org.postgresql</groupId>&ndash;&gt;-->
+		<!--&lt;!&ndash;<artifactId>postgresql</artifactId>&ndash;&gt;-->
+		<!--&lt;!&ndash;<scope>runtime</scope>&ndash;&gt;-->
+		<!--&lt;!&ndash;</dependency>&ndash;&gt;-->
+
+		<!--&lt;!&ndash;<dependency>&ndash;&gt;-->
+		<!--&lt;!&ndash;<groupId>org.springframework.boot</groupId>&ndash;&gt;-->
+		<!--&lt;!&ndash;<artifactId>spring-boot-starter-jdbc</artifactId>&ndash;&gt;-->
+		<!--&lt;!&ndash;</dependency>&ndash;&gt;-->
+
+
+
+	<!--<dependencyManagement>-->
+		<!--<dependencies>-->
+			<!--<dependency>-->
+				<!--<groupId>org.springframework.cloud</groupId>-->
+				<!--<artifactId>spring-cloud-dependencies</artifactId>-->
+				<!--<version>Finchley.BUILD-SNAPSHOT</version>-->
+				<!--<type>pom</type>-->
+				<!--<scope>import</scope>-->
+			<!--</dependency>-->
+		<!--</dependencies>-->
+	<!--</dependencyManagement>-->
+	<!--<build>-->
+		<!--<plugins>-->
+			<!--<plugin>-->
+				<!--<groupId>org.springframework.boot</groupId>-->
+				<!--<artifactId>spring-boot-maven-plugin</artifactId>-->
+			<!--</plugin>-->
+		<!--</plugins>-->
+	<!--</build>-->
+	<!--<repositories>-->
+		<!--<repository>-->
+			<!--<id>spring-snapshots</id>-->
+			<!--<name>Spring Snapshots</name>-->
+			<!--<url>https://repo.spring.io/libs-snapshot</url>-->
+			<!--<snapshots>-->
+				<!--<enabled>true</enabled>-->
+			<!--</snapshots>-->
+		<!--</repository>-->
+	<!--</repositories>-->
 
 </project>

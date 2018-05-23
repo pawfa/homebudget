@@ -8,7 +8,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>jar</packaging>
 
-	<name>discoveryservice</name>
+	<name>discovery-service</name>
 	<description>Discovery service</description>
 
 	<parent>
@@ -22,17 +22,16 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>1.8</java.version>
-		<spring-cloud.version>Finchley.BUILD-SNAPSHOT</spring-cloud.version>
 	</properties>
 
 	<dependencies>
+
 		<dependency>
-		<groupId>org.springframework.cloud</groupId>
-		<artifactId>spring-cloud-netflix</artifactId>
-		<version>2.0.0.RC1</version>
-		<type>pom</type>
-		<scope>import</scope>
-	</dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-test</artifactId>
+			<scope>test</scope>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
@@ -50,7 +49,7 @@
 			<dependency>
 				<groupId>org.springframework.cloud</groupId>
 				<artifactId>spring-cloud-dependencies</artifactId>
-				<version>${spring-cloud.version}</version>
+				<version>Finchley.RC1</version>
 				<type>pom</type>
 				<scope>import</scope>
 			</dependency>
@@ -68,22 +67,12 @@
 
 	<repositories>
 		<repository>
-			<id>spring-snapshots</id>
-			<name>Spring Snapshots</name>
-			<url>https://repo.spring.io/snapshot</url>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
 			<id>spring-milestones</id>
 			<name>Spring Milestones</name>
-			<url>https://repo.spring.io/milestone</url>
+			<url>https://repo.spring.io/libs-milestone</url>
 			<snapshots>
 				<enabled>false</enabled>
 			</snapshots>
 		</repository>
 	</repositories>
-
-
 </project>
