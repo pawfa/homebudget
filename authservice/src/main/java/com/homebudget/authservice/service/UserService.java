@@ -4,6 +4,8 @@ import com.homebudget.authservice.dao.UserDao;
 import com.homebudget.authservice.entity.User;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
+
 @Service
 public class UserService {
 
@@ -19,5 +21,9 @@ public class UserService {
 
     public void save(User user) {
         userDao.saveUser(user);
+    }
+
+    public Collection<User> findAllUsers() {
+        return userDao.findAllUsers();
     }
 }

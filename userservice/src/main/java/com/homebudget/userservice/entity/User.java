@@ -1,21 +1,22 @@
 package com.homebudget.userservice.entity;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.Email;
 
 @Entity
+@Table
 public class User {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
+    @Column
     private int userId;
 
     @Email
+    @Column
     private String email;
 
+    @Column
     private String password;
 
     public int getUserId() {

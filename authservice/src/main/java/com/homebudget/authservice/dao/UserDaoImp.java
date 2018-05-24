@@ -8,9 +8,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.util.Collection;
 
 @Transactional
 @Repository
@@ -22,6 +20,14 @@ public class UserDaoImp implements UserDao{
     private EntityManager entityManager;
 
     @Override
+    public Collection<User> findAllUsers() {
+        String  configFileLocation = getClass().getProtectionDomain().getCodeSource().getLocation().getPath() + "hibernate.cfg.xml";
+        logger.info(configFileLocation);
+        String sql = "FROM User";
+        return (Collection<User>)entityManager.createQuery(sql).getResultList();
+    }
+
+    @Override
     public User findByUsername(String username) {
         String sql = "FROM User u WHERE u.email = :username";
         return (User)entityManager.createQuery(sql).getResultList();
@@ -29,14 +35,6 @@ public class UserDaoImp implements UserDao{
 
     @Override
     public void saveUser(User user) {
-//        String jdbcurl = "jdbc:h2:file:./database";
-//        String us = "sasa";
-//        String pass = "";
-//        try {
-//            Connection conn = DriverManager.getConnection(jdbcurl,us,pass);
-//        } catch (SQLException e) {
-//            e.printStackTrace();
-//        }
         logger.info(user.getEmail());
         logger.info(user.getPassword());
         try {
