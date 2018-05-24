@@ -1,25 +1,27 @@
-package com.homebudget.userservice.entity;
+package com.homebudget.authservice.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.Email;
+import java.util.Collection;
 
 @Entity
 public class User {
 
     @Id
     @GeneratedValue(strategy= GenerationType.AUTO)
-    private int userId;
+    private int id;
 
     @Email
     private String email;
 
     private String password;
+    private String role;
 
-    public int getUserId() {
-        return userId;
+    public int getId() {
+        return id;
     }
 
     public String getEmail() {
@@ -38,4 +40,9 @@ public class User {
         this.password = password;
     }
 
+    public String getRole() {
+        return role;
+    }
+
 }
+
