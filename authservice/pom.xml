@@ -54,12 +54,13 @@
 			<scope>test</scope>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.11</version>
+		</dependency>
 
-        <!-- H2 Database -->
-        <dependency>
-            <groupId>com.h2database</groupId>
-            <artifactId>h2</artifactId>
-        </dependency>
 
         <!-- Spring ORM support -->
         <dependency>
